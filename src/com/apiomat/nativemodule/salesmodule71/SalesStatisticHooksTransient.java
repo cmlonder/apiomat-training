@@ -28,6 +28,7 @@ import com.apiomat.nativemodule.basics.User;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -67,7 +68,7 @@ public class SalesStatisticHooksTransient<T extends com.apiomat.nativemodule.sal
     {
         List<Salesman> salesMans = this.model.findByNames(Salesman.class, query, r);
         List<Lead> leads = salesMans.get(0).getListOfLeads();
-        long sum = leads.stream().mapToLong(Lead::getScore).sum();
+        long sum = leads.stream().filter(Objects::nonNull).mapToLong(Lead::getScore).sum();
         SalesStatistic salesStatistic = new SalesStatistic();
         salesStatistic.setTotalScore(sum);
         return Collections.singletonList(salesStatistic);
