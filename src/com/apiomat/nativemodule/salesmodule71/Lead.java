@@ -38,9 +38,9 @@ import com.apiomat.nativemodule.salesmodule71.*;
 @com.apiomat.nativemodule.Model( moduleName = "SalesModule71",
     hooksClassNameTransient = "com.apiomat.nativemodule.salesmodule71.LeadHooksTransient", 
     hooksClassNameNonTransient = "com.apiomat.nativemodule.salesmodule71.LeadHooksNonTransient", 
-    isTransient = false,     requiredUserRoleCreate=com.apiomat.nativemodule.UserRole.AppAdmin, requiredUserRoleRead=com.apiomat.nativemodule.UserRole.AppAdmin,
-    requiredUserRoleWrite=com.apiomat.nativemodule.UserRole.AppAdmin, restrictResourceAccess=false,    allowedRolesCreate={"sales"}, allowedRolesRead={"sales"},
-    allowedRolesWrite={"sales"}, allowedRolesGrant={}, 
+    isTransient = false,     requiredUserRoleCreate=com.apiomat.nativemodule.UserRole.Guest, requiredUserRoleRead=com.apiomat.nativemodule.UserRole.Guest,
+    requiredUserRoleWrite=com.apiomat.nativemodule.UserRole.Guest, restrictResourceAccess=false,    allowedRolesCreate={}, allowedRolesRead={},
+    allowedRolesWrite={}, allowedRolesGrant={}, 
     roleClassesMap={})
 public class Lead extends com.apiomat.nativemodule.AbstractClientDataModel<com.apiomat.nativemodule.salesmodule71.Lead> implements com.apiomat.nativemodule.IModel<com.apiomat.nativemodule.salesmodule71.Lead>
 {
