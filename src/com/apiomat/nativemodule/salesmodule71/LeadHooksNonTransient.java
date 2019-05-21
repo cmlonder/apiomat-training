@@ -28,6 +28,10 @@ import com.apiomat.nativemodule.basics.User;
 
 import com.apiomat.nativemodule.salesmodule71.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
 * Generated class for hooks on your Lead data model
 */
@@ -50,6 +54,9 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     @Override
     public void beforePost( com.apiomat.nativemodule.salesmodule71.Lead obj, com.apiomat.nativemodule.Request r )
     {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        obj.setLastVisit(date);
     }
 
 
