@@ -30,8 +30,10 @@ import com.apiomat.nativemodule.salesmodule71.*;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
 * Generated class for hooks on your Lead data model
@@ -66,10 +68,13 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     {
         String query = "userName == \""+ r.getUserEmail() + "\"";
         SalesModule71.AOM.log(Level.INFO, "new lead is being added for: " + r.getUserEmail() + ", lead: " + obj.getFirstName());
-        Salesman[] salesMans = (Salesman[]) SalesModule71.AOM.findByNames(r.getApplicationName(), Salesman.MODULE_NAME, Salesman.MODEL_NAME, query, r);
-        List<Lead> listOfLeads = salesMans[0].getListOfLeads();
+        IModel<?>[] salesMansModel =  SalesModule71.AOM.findByNames(r.getApplicationName(), Salesman.MODULE_NAME, Salesman.MODEL_NAME, query, r);
+        final List<Salesman> salesMans = Arrays.stream( salesMansModel ).map(t -> {
+            return ( Salesman ) t;
+        } ).collect( Collectors.toList( ) );
+        List<Lead> listOfLeads = salesMans.get(0).getListOfLeads();
         listOfLeads.add(obj);
-        salesMans[0].save();
+        salesMans.get(0).save();
     }
 
     @Override
