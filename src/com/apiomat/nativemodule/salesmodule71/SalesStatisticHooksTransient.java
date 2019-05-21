@@ -26,6 +26,10 @@ package com.apiomat.nativemodule.salesmodule71;
 import com.apiomat.nativemodule.*;
 import com.apiomat.nativemodule.basics.User;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 /**
 * Generated class for hooks on your SalesStatistic data model
@@ -61,7 +65,12 @@ public class SalesStatisticHooksTransient<T extends com.apiomat.nativemodule.sal
     @Override
     public java.util.List<com.apiomat.nativemodule.salesmodule71.SalesStatistic> doGetAll( String query, com.apiomat.nativemodule.Request r )
     {
-        return null;
+        List<Salesman> salesMans = this.model.findByNames(Salesman.class, query, r);
+        List<Lead> leads = salesMans.get(0).getListOfLeads();
+        long sum = leads.stream().mapToLong(Lead::getScore).sum();
+        SalesStatistic salesStatistic = new SalesStatistic();
+        salesStatistic.setTotalScore(sum);
+        return Collections.singletonList(salesStatistic);
     }
 
     @Override
