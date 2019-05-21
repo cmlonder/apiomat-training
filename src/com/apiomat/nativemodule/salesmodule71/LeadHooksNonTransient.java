@@ -65,6 +65,7 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     public void afterPost( com.apiomat.nativemodule.salesmodule71.Lead obj, com.apiomat.nativemodule.Request r )
     {
         String query = "userName == \""+ r.getUserEmail() + "\"";
+        SalesModule71.AOM.log(Level.INFO, "new lead is being added for: " + r.getUserEmail() + ", lead: " + obj.getFirstName());
         Salesman[] salesMans = (Salesman[]) SalesModule71.AOM.findByNames(r.getApplicationName(), Salesman.MODULE_NAME, Salesman.MODEL_NAME, query, r);
         List<Lead> listOfLeads = salesMans[0].getListOfLeads();
         listOfLeads.add(obj);
