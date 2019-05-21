@@ -67,6 +67,7 @@ public class SalesStatisticHooksTransient<T extends com.apiomat.nativemodule.sal
     public java.util.List<com.apiomat.nativemodule.salesmodule71.SalesStatistic> doGetAll( String query, com.apiomat.nativemodule.Request r )
     {
         List<Lead> leads = this.model.findByNames(Lead.class, "", r);
+        SalesModule71.AOM.log(Level.INFO, "leads size:" + leads.size());
         long sum = leads.stream().filter(lead -> lead.getScore() != null).mapToLong(Lead::getScore).sum();
         SalesStatistic salesStatistic = new SalesStatistic();
         salesStatistic.setTotalScore(sum);
