@@ -66,9 +66,8 @@ public class SalesStatisticHooksTransient<T extends com.apiomat.nativemodule.sal
     @Override
     public java.util.List<com.apiomat.nativemodule.salesmodule71.SalesStatistic> doGetAll( String query, com.apiomat.nativemodule.Request r )
     {
-        List<Salesman> salesMans = this.model.findByNames(Salesman.class, query, r);
-        List<Lead> leads = salesMans.get(0).getListOfLeads();
-        long sum = leads.stream().filter(Objects::nonNull).mapToLong(Lead::getScore).sum();
+        List<Lead> leads = this.model.findByNames(Lead.class, query, r);
+        long sum = leads.stream().filter(lead -> lead.getScore() != null).mapToLong(Lead::getScore).sum();
         SalesStatistic salesStatistic = new SalesStatistic();
         salesStatistic.setTotalScore(sum);
         return Collections.singletonList(salesStatistic);
@@ -77,7 +76,7 @@ public class SalesStatisticHooksTransient<T extends com.apiomat.nativemodule.sal
     @Override
     public long doCountAll( String query, com.apiomat.nativemodule.Request r )
     {
-        return 1;
+        return 0;
     }
 
     @Override
