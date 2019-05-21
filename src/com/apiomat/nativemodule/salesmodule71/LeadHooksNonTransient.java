@@ -33,6 +33,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -57,9 +58,9 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     @Override
     public void beforePost( com.apiomat.nativemodule.salesmodule71.Lead obj, com.apiomat.nativemodule.Request r )
     {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = new Date();
-        obj.setLastVisit(date);
+        final Long SCORE = 100L;
+        obj.setScore(SCORE);
+        obj.setLastVisit(new Date());
     }
 
 
@@ -105,6 +106,9 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     @Override
     public boolean beforePut( com.apiomat.nativemodule.salesmodule71.Lead objFromDB, com.apiomat.nativemodule.salesmodule71.Lead obj, com.apiomat.nativemodule.Request r )
     {
+        if (!Objects.isNull(obj.getScore())) {
+            SalesModule71.AOM.throwException(r.getApplicationName(), "score modification not allowed");
+        }
         return false;
     }
 
