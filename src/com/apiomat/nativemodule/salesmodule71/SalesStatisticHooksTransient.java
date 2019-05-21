@@ -77,7 +77,7 @@ public class SalesStatisticHooksTransient<T extends com.apiomat.nativemodule.sal
     @Override
     public long doCountAll( String query, com.apiomat.nativemodule.Request r )
     {
-        return 0;
+        return 1;
     }
 
     @Override
