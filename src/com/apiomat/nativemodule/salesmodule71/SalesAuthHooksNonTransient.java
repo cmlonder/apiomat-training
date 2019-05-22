@@ -178,9 +178,9 @@ public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.sales
     public boolean auth(String httpVerb, String moduleName, String modelName, String modelForeignId, String userNameOrEmail, String passwordOrToken, Request request) {
         SalesModule71.AOM.log(Level.INFO, "using custom auth in sales");
         if (userNameOrEmail.endsWith("@training.de")) {
-            return false;
+            return true;
         }
         SalesModule71.AOM.throwAuthenticationException("user is not allowed");
-        return true;
+        return false;
     }
 }
