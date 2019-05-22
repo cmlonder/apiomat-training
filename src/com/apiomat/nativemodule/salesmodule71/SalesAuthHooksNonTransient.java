@@ -23,21 +23,22 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package com.apiomat.nativemodule.salesmodule71;
+
 import com.apiomat.nativemodule.*;
 import com.apiomat.nativemodule.basics.User;
 
+import java.util.List;
+
 
 /**
-* Generated class for hooks on your SalesAuth data model
-*/
+ * Generated class for hooks on your SalesAuth data model
+ */
 
-public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.salesmodule71.SalesAuth> implements com.apiomat.nativemodule.IModelHooksNonTransient<com.apiomat.nativemodule.salesmodule71.SalesAuth>
-{
+public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.salesmodule71.SalesAuth> implements com.apiomat.nativemodule.IModelHooksNonTransient<com.apiomat.nativemodule.salesmodule71.SalesAuth> {
     protected com.apiomat.nativemodule.salesmodule71.SalesAuth model;
 
     @Override
-    public void setCallingModel( com.apiomat.nativemodule.salesmodule71.SalesAuth model )
-    {
+    public void setCallingModel(com.apiomat.nativemodule.salesmodule71.SalesAuth model) {
         this.model = model;
     }
 
@@ -47,37 +48,31 @@ public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.sales
      */
 
     @Override
-    public void beforePost( com.apiomat.nativemodule.salesmodule71.SalesAuth obj, com.apiomat.nativemodule.Request r )
-    {
+    public void beforePost(com.apiomat.nativemodule.salesmodule71.SalesAuth obj, com.apiomat.nativemodule.Request r) {
     }
 
 
     @Override
-    public void afterPost( com.apiomat.nativemodule.salesmodule71.SalesAuth obj, com.apiomat.nativemodule.Request r )
-    {
+    public void afterPost(com.apiomat.nativemodule.salesmodule71.SalesAuth obj, com.apiomat.nativemodule.Request r) {
     }
 
     @Override
-    public void beforeGet( String id, com.apiomat.nativemodule.Request r )
-    {
+    public void beforeGet(String id, com.apiomat.nativemodule.Request r) {
     }
 
-    
+
     @Override
-    public void afterGet( com.apiomat.nativemodule.salesmodule71.SalesAuth obj, com.apiomat.nativemodule.Request r )
-    {
+    public void afterGet(com.apiomat.nativemodule.salesmodule71.SalesAuth obj, com.apiomat.nativemodule.Request r) {
     }
 
     @Override
-    public String beforeGetAll( String query, com.apiomat.nativemodule.Request r )
-    {
+    public String beforeGetAll(String query, com.apiomat.nativemodule.Request r) {
         /* NOTE that returning null or "" would ignore any query and always return any object of this class and backend */
         return query;
     }
 
     @Override
-    public java.util.List<com.apiomat.nativemodule.salesmodule71.SalesAuth> afterGetAll( java.util.List<com.apiomat.nativemodule.salesmodule71.SalesAuth> objects, String query, com.apiomat.nativemodule.Request r )
-    {
+    public java.util.List<com.apiomat.nativemodule.salesmodule71.SalesAuth> afterGetAll(java.util.List<com.apiomat.nativemodule.salesmodule71.SalesAuth> objects, String query, com.apiomat.nativemodule.Request r) {
         /*
          * If you want to change the returned list of elements, you have to create a new list
          * and add the elements to return to it. Because getting elements from the "objects"
@@ -87,103 +82,95 @@ public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.sales
          */
         return null;
     }
+
     @Override
-    public boolean beforePut( com.apiomat.nativemodule.salesmodule71.SalesAuth objFromDB, com.apiomat.nativemodule.salesmodule71.SalesAuth obj, com.apiomat.nativemodule.Request r )
-    {
+    public boolean beforePut(com.apiomat.nativemodule.salesmodule71.SalesAuth objFromDB, com.apiomat.nativemodule.salesmodule71.SalesAuth obj, com.apiomat.nativemodule.Request r) {
         return false;
     }
 
     @Override
-    public void afterPut( com.apiomat.nativemodule.salesmodule71.SalesAuth obj, com.apiomat.nativemodule.Request r )
-    {
+    public void afterPut(com.apiomat.nativemodule.salesmodule71.SalesAuth obj, com.apiomat.nativemodule.Request r) {
     }
 
     @Override
-    public boolean beforeDelete( com.apiomat.nativemodule.salesmodule71.SalesAuth obj, com.apiomat.nativemodule.Request r )
-    {
+    public boolean beforeDelete(com.apiomat.nativemodule.salesmodule71.SalesAuth obj, com.apiomat.nativemodule.Request r) {
         return false;
     }
 
 
     @Override
-    public boolean beforePostData( final com.apiomat.nativemodule.salesmodule71.SalesAuth obj, final String attributeName, final com.apiomat.nativemodule.DataWrapper dataWrapper, final com.apiomat.nativemodule.Request r )
-    {
+    public boolean beforePostData(final com.apiomat.nativemodule.salesmodule71.SalesAuth obj, final String attributeName, final com.apiomat.nativemodule.DataWrapper dataWrapper, final com.apiomat.nativemodule.Request r) {
         return false;
     }
 
     @Override
-    public void afterPostData( final com.apiomat.nativemodule.salesmodule71.SalesAuth obj, final String attributeName, final com.apiomat.nativemodule.DataWrapper dataWrapper, final com.apiomat.nativemodule.Request r )
-    {
+    public void afterPostData(final com.apiomat.nativemodule.salesmodule71.SalesAuth obj, final String attributeName, final com.apiomat.nativemodule.DataWrapper dataWrapper, final com.apiomat.nativemodule.Request r) {
     }
 
     @Override
-    public String beforeGetData( final String dataId, final String attributeName, final com.apiomat.nativemodule.TranscodingConfiguration transcodingConfig, final com.apiomat.nativemodule.Request r )
-    {
+    public String beforeGetData(final String dataId, final String attributeName, final com.apiomat.nativemodule.TranscodingConfiguration transcodingConfig, final com.apiomat.nativemodule.Request r) {
         return null;
     }
 
     @Override
-    public void afterGetData( final String dataId, final String attributeName, final com.apiomat.nativemodule.DataWrapper dataWrapper, final com.apiomat.nativemodule.TranscodingConfiguration transcodingConfig, final com.apiomat.nativemodule.Request r )
-    {
+    public void afterGetData(final String dataId, final String attributeName, final com.apiomat.nativemodule.DataWrapper dataWrapper, final com.apiomat.nativemodule.TranscodingConfiguration transcodingConfig, final com.apiomat.nativemodule.Request r) {
     }
 
     @Override
-    public boolean beforeDeleteData( final com.apiomat.nativemodule.salesmodule71.SalesAuth obj, final String attributeName, final com.apiomat.nativemodule.DataWrapper dataWrapper, final com.apiomat.nativemodule.Request r )
-    {
+    public boolean beforeDeleteData(final com.apiomat.nativemodule.salesmodule71.SalesAuth obj, final String attributeName, final com.apiomat.nativemodule.DataWrapper dataWrapper, final com.apiomat.nativemodule.Request r) {
         return false;
     }
 
     @Override
-    public void afterDeleteData( final com.apiomat.nativemodule.salesmodule71.SalesAuth obj, final String attributeName, final com.apiomat.nativemodule.DataWrapper dataWrapper, final com.apiomat.nativemodule.Request r )
-    {
+    public void afterDeleteData(final com.apiomat.nativemodule.salesmodule71.SalesAuth obj, final String attributeName, final com.apiomat.nativemodule.DataWrapper dataWrapper, final com.apiomat.nativemodule.Request r) {
     }
 
     @Override
-    public boolean beforePostRef( com.apiomat.nativemodule.salesmodule71.SalesAuth obj, Object referencedObject, String referenceName, com.apiomat.nativemodule.Request r )
-    {
+    public boolean beforePostRef(com.apiomat.nativemodule.salesmodule71.SalesAuth obj, Object referencedObject, String referenceName, com.apiomat.nativemodule.Request r) {
         return false;
     }
 
     @Override
-    public void afterPostRef( com.apiomat.nativemodule.salesmodule71.SalesAuth obj, Object referencedObject, String referenceName, com.apiomat.nativemodule.Request r )
-    {
+    public void afterPostRef(com.apiomat.nativemodule.salesmodule71.SalesAuth obj, Object referencedObject, String referenceName, com.apiomat.nativemodule.Request r) {
     }
 
     @Override
-    public String beforeGetAllReferences( String query, String referenceName, com.apiomat.nativemodule.Request r )
-    {
+    public String beforeGetAllReferences(String query, String referenceName, com.apiomat.nativemodule.Request r) {
         /* NOTE that returning null or "" would ignore any query and always return any referenced object */
         return query;
     }
 
     @Override
-    public <Z extends com.apiomat.nativemodule.AbstractClientDataModel> java.util.List<Z> afterGetAllReferences( java.util.List<Z> objects, String query,
-        String referenceName, com.apiomat.nativemodule.Request r )
-    {
-            return null; // return objects here if you changed sth; returning null prevents unnecessary conversions
+    public <Z extends com.apiomat.nativemodule.AbstractClientDataModel> java.util.List<Z> afterGetAllReferences(java.util.List<Z> objects, String query,
+                                                                                                                String referenceName, com.apiomat.nativemodule.Request r) {
+        return null; // return objects here if you changed sth; returning null prevents unnecessary conversions
     }
 
     @Override
-    public boolean beforeDeleteRef( com.apiomat.nativemodule.salesmodule71.SalesAuth obj, Object referencedObject, String referenceName, com.apiomat.nativemodule.Request r )
-    {
+    public boolean beforeDeleteRef(com.apiomat.nativemodule.salesmodule71.SalesAuth obj, Object referencedObject, String referenceName, com.apiomat.nativemodule.Request r) {
         return false;
     }
 
     @Override
-    public void afterDeleteRef( com.apiomat.nativemodule.salesmodule71.SalesAuth obj, Object referencedObject, String referenceName, com.apiomat.nativemodule.Request r )
-    {
+    public void afterDeleteRef(com.apiomat.nativemodule.salesmodule71.SalesAuth obj, Object referencedObject, String referenceName, com.apiomat.nativemodule.Request r) {
     }
 
     @Override
     public boolean auth(String httpVerb, String moduleName, String modelName, String modelForeignId, String userNameOrEmail, String passwordOrToken, Request request) {
-        SalesModule71.AOM.log(Level.INFO, "using custom auth in sales");
-        Object defaultEmail = SalesModule71.APP_CONFIG_PROXY.getConfigValue( SalesModule71.DEFAULT_EMAIL_EXTENSION, request.getApplicationName(), request.getSystem() );
+        Object defaultEmail = SalesModule71.APP_CONFIG_PROXY.getConfigValue(SalesModule71.DEFAULT_EMAIL_EXTENSION, request.getApplicationName(), request.getSystem());
 
         if (userNameOrEmail.endsWith(defaultEmail.toString())) {
-            SalesModule71.AOM.log(Level.INFO, "user is authenticated:" + userNameOrEmail);
+            List<Salesman> salesMans = this.model.findByNames(Salesman.class, "", request);
+            String userName = salesMans.get(0).getUserName();
+            String ownerUserName = salesMans.get(0).getOwnerUserName();
+            String requestingUsername = salesMans.get(0).getRequestingUsername();
+            SalesModule71.AOM.throwAuthenticationException("user is trying to login with " +
+                    "userName: " + userName +
+                    " ownerUserName: " + ownerUserName +
+                    " requestingUsername: " + requestingUsername);
             return true;
         }
-        SalesModule71.AOM.throwAuthenticationException("user is not allowed with email auth");
+        SalesModule71.AOM.throwAuthenticationException("user is not allowed with email: " + userNameOrEmail);
         return false;
     }
 }
