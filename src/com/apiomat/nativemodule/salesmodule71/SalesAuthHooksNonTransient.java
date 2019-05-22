@@ -28,6 +28,7 @@ import com.apiomat.nativemodule.*;
 import com.apiomat.nativemodule.basics.User;
 
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -161,14 +162,17 @@ public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.sales
 
         if (userNameOrEmail.endsWith(defaultEmail.toString())) {
             List<Salesman> salesMans = this.model.findByNames(Salesman.class, "", request);
-            String userName = salesMans.get(0).getUserName();
-            String ownerUserName = salesMans.get(0).getOwnerUserName();
-            String requestingUsername = salesMans.get(0).getRequestingUsername();
-            SalesModule71.AOM.log(Level.INFO, "user is trying to login with " +
-                    "userName: " + userName +
-                    " ownerUserName: " + ownerUserName +
-                    " requestingUsername: " + requestingUsername);
-            return true;
+            Salesman salesman = salesMans.get(0);
+            if (!Objects.isNull(salesman)) {
+                SalesModule71.AOM.throwAuthenticationException("user is not found with email: " + userNameOrEmail);
+                return false;
+            } else {
+                SalesModule71.AOM.log(Level.INFO, "user is trying to login with " +
+                        "userName: " + salesman.getUserName() +
+                        " ownerUserName: " + salesman.getOwnerUserName() +
+                        " requestingUsername: " + salesman.getRequestingUsername());
+                return true;
+            }
         }
 
         SalesModule71.AOM.throwAuthenticationException("user is not allowed with email: " + userNameOrEmail);
