@@ -27,6 +27,8 @@ package com.apiomat.nativemodule.salesmodule71;
 import com.apiomat.nativemodule.IModel;
 import com.apiomat.nativemodule.Level;
 
+import javax.ws.rs.core.MediaType;
+import java.awt.*;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -66,6 +68,7 @@ public class RestClass extends com.apiomat.nativemodule.AbstractRestResource
     @io.swagger.annotations.ApiOperation( value = "A simple endpoint to get lead average score" )
     @javax.ws.rs.GET
     @javax.ws.rs.Path( "/leads/score" )
+    @javax.ws.rs.Produces(MediaType.TEXT_PLAIN)
     public javax.ws.rs.core.Response getAverageScore()
     {
         final com.apiomat.nativemodule.Request request = this.getAOMRequest( );
