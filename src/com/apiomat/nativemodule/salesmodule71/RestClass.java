@@ -69,7 +69,6 @@ public class RestClass extends com.apiomat.nativemodule.AbstractRestResource
     @javax.ws.rs.GET
     @javax.ws.rs.Path( "/leads/score" )
     @javax.ws.rs.Produces(MediaType.TEXT_PLAIN)
-    @javax.ws.rs.Consumes(MediaType.TEXT_PLAIN)
     public javax.ws.rs.core.Response getAverageScore()
     {
         final com.apiomat.nativemodule.Request request = this.getAOMRequest( );
@@ -77,9 +76,7 @@ public class RestClass extends com.apiomat.nativemodule.AbstractRestResource
         System.out.println( request );
 
         IModel<?>[] leadsModel = SalesModule71.AOM.findByNames(request.getApplicationName(), Lead.MODULE_NAME, Lead.MODEL_NAME, "", request);
-        final List<Lead> fields = Arrays.stream( leadsModel ).map(t -> {
-            return ( Lead ) t;
-        } ).collect( Collectors.toList( ) );
+        final List<Lead> fields = Arrays.stream( leadsModel ).map(t -> ( Lead ) t).collect( Collectors.toList( ) );
 
         long average = 0;
         if (fields.size() != 0) {
