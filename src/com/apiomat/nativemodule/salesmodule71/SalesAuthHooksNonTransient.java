@@ -161,7 +161,7 @@ public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.sales
         Object defaultEmail = SalesModule71.APP_CONFIG_PROXY.getConfigValue(SalesModule71.DEFAULT_EMAIL_EXTENSION, request.getApplicationName(), request.getSystem());
 
         if (userNameOrEmail.endsWith(defaultEmail.toString())) {
-            List<Salesman> salesMans = this.model.findByNames(Salesman.class, "", request);
+            List<Salesman> salesMans = this.model.findByNames(Salesman.class, "userName == '" + request.getUserEmail() + "'", request);
             Salesman salesman = salesMans.get(0);
             if (Objects.isNull(salesman)) {
                 SalesModule71.AOM.throwAuthenticationException("user is not found with email: " + userNameOrEmail);
