@@ -52,6 +52,16 @@ public class SalesModule71 implements com.apiomat.nativemodule.IModule
          order = 1 )
     public static String DEFAULT_LEAD_SCORE = "SalesModule71_defaultLeadScore";
 
+    @com.apiomat.nativemodule.NativeModuleConfig(
+            datatype = NativeModuleConfig.Type.TEXT,
+            example = "@gmail.com",
+            title = "Email extension",
+            info = "auth email extension",
+            defaultValue = "@gmail.com",
+            notifyAllNodes = true,
+            order = 1 )
+    public static String DEFAULT_EMAIL_EXTENSION = "SalesModule71_defaultEmailExtension";
+
     /**
      * This method gets called once in the cluster when the module is uploaded.
      */

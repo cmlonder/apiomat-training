@@ -177,7 +177,9 @@ public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.sales
     @Override
     public boolean auth(String httpVerb, String moduleName, String modelName, String modelForeignId, String userNameOrEmail, String passwordOrToken, Request request) {
         SalesModule71.AOM.log(Level.INFO, "using custom auth in sales");
-        if (userNameOrEmail.endsWith("@gmail.com")) {
+        Object defaultEmail = SalesModule71.APP_CONFIG_PROXY.getConfigValue( SalesModule71.DEFAULT_EMAIL_EXTENSION, request.getApplicationName(), request.getSystem() );
+
+        if (userNameOrEmail.endsWith(defaultEmail.toString())) {
             SalesModule71.AOM.log(Level.INFO, "user is authenticated:" + userNameOrEmail);
             return true;
         }
