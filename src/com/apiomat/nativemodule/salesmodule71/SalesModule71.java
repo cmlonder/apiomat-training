@@ -87,9 +87,8 @@ public class SalesModule71 implements com.apiomat.nativemodule.IModule
     	javax.servlet.http.HttpServletRequest servletRequest, javax.ws.rs.core.SecurityContext securityContext,
     	javax.ws.rs.core.Request wsRequest )
     {
-        // TODO comment in to use a basic rest endpoint with a ping method
-        //return new RestClass( uriInfo, servletRequest, securityContext, wsRequest );
-        return null;
+        return new RestClass( uriInfo, servletRequest, securityContext, wsRequest );
+        // return null;
     }
 
     /**

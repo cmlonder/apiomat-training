@@ -24,6 +24,14 @@
  */
 package com.apiomat.nativemodule.salesmodule71;
 
+import com.apiomat.nativemodule.IModel;
+import com.apiomat.nativemodule.Level;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * REST class for your module
  */
@@ -53,23 +61,28 @@ public class RestClass extends com.apiomat.nativemodule.AbstractRestResource
      * The @ApiOperation and @ApiParam annotations are used to documnt the REST endpoint in the apidocs:
      * <BASEURL>/apidocs/index.html
      *
-     * @param param arbitrary value which is returned in response
      * @return response
      */
     @io.swagger.annotations.ApiOperation( value = "A simple ping-like GET endpoint" )
     @javax.ws.rs.GET
-    @javax.ws.rs.Path( "/ping/{param}" )
-    public javax.ws.rs.core.Response ping( @io.swagger.annotations.ApiParam( value = "param name" ) @javax.ws.rs.PathParam( "param" ) String param )
+    @javax.ws.rs.Path( "/leads/score" )
+    public javax.ws.rs.core.Response getAverageScore()
     {
         final com.apiomat.nativemodule.Request request = this.getAOMRequest( );
         // extract auth information from the request object if needed
         System.out.println( request );
 
-        if (param == null || "".equals( param.trim( ) ))
-        {
-            param = "pong";
-        }
+        IModel<?>[] leadsModel = SalesModule71.AOM.findByNames(request.getApplicationName(), Lead.MODULE_NAME, Lead.MODEL_NAME, "", request);
+        final List<Lead> fields = Arrays.stream( leadsModel ).map(t -> {
+            return ( Lead ) t;
+        } ).collect( Collectors.toList( ) );
 
-        return javax.ws.rs.core.Response.ok( param ).type( javax.ws.rs.core.MediaType.TEXT_PLAIN ).build( );
+        long average = 0;
+        if (fields.size() != 0) {
+            long sum = fields.stream().filter(lead -> lead.getScore() != null).mapToLong(Lead::getScore).sum();
+            average = sum / fields.size();
+        }
+        
+        return javax.ws.rs.core.Response.ok( average ).type( javax.ws.rs.core.MediaType.TEXT_PLAIN ).build( );
     }
 }
