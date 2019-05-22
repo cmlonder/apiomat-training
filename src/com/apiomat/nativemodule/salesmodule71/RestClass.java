@@ -68,7 +68,6 @@ public class RestClass extends com.apiomat.nativemodule.AbstractRestResource
     @io.swagger.annotations.ApiOperation( value = "A simple endpoint to get lead average score" )
     @javax.ws.rs.GET
     @javax.ws.rs.Path( "/leads/score" )
-    @javax.ws.rs.Produces(MediaType.TEXT_PLAIN)
     public javax.ws.rs.core.Response getAverageScore()
     {
         final com.apiomat.nativemodule.Request request = this.getAOMRequest( );
@@ -85,6 +84,6 @@ public class RestClass extends com.apiomat.nativemodule.AbstractRestResource
         }
 
         SalesModule71.AOM.log(Level.INFO, "lead average is calculated: " + average);
-        return javax.ws.rs.core.Response.ok( average ).type( javax.ws.rs.core.MediaType.TEXT_PLAIN ).build( );
+        return javax.ws.rs.core.Response.ok( average ).build( );
     }
 }
