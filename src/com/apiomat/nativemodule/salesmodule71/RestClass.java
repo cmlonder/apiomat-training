@@ -69,6 +69,7 @@ public class RestClass extends com.apiomat.nativemodule.AbstractRestResource
     @javax.ws.rs.GET
     @javax.ws.rs.Path( "/leads/score" )
     @javax.ws.rs.Produces(MediaType.TEXT_PLAIN)
+    @javax.ws.rs.Consumes(MediaType.TEXT_PLAIN)
     public javax.ws.rs.core.Response getAverageScore()
     {
         final com.apiomat.nativemodule.Request request = this.getAOMRequest( );
