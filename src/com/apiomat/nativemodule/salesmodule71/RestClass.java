@@ -26,8 +26,10 @@ package com.apiomat.nativemodule.salesmodule71;
 
 import com.apiomat.nativemodule.IModel;
 import com.apiomat.nativemodule.Level;
+import com.sun.org.apache.xerces.internal.util.Status;
 
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.awt.*;
 import java.util.Arrays;
 import java.util.Collections;
@@ -74,16 +76,21 @@ public class RestClass extends com.apiomat.nativemodule.AbstractRestResource
         // extract auth information from the request object if needed
         System.out.println( request );
 
-        IModel<?>[] leadsModel = SalesModule71.AOM.findByNames(request.getApplicationName(), Lead.MODULE_NAME, Lead.MODEL_NAME, "", request);
-        final List<Lead> fields = Arrays.stream( leadsModel ).map(t -> ( Lead ) t).collect( Collectors.toList( ) );
+        if (request.getIsAccountRequest() || SalesModule71.AOM.checkUserRequestCredentials(request)) {
+            IModel<?>[] leadsModel = SalesModule71.AOM.findByNames(request.getApplicationName(), Lead.MODULE_NAME, Lead.MODEL_NAME, "", request);
+            final List<Lead> fields = Arrays.stream( leadsModel ).map(t -> ( Lead ) t).collect( Collectors.toList( ) );
 
-        long average = 0;
-        if (fields.size() != 0) {
-            long sum = fields.stream().filter(lead -> lead.getScore() != null).mapToLong(Lead::getScore).sum();
-            average = sum / fields.size();
+            long average = 0;
+            if (fields.size() != 0) {
+                long sum = fields.stream().filter(lead -> lead.getScore() != null).mapToLong(Lead::getScore).sum();
+                average = sum / fields.size();
+            }
+
+            SalesModule71.AOM.log(Level.INFO, "lead average is calculated: " + average);
+            return javax.ws.rs.core.Response.ok( average ).build( );
         }
 
-        SalesModule71.AOM.log(Level.INFO, "lead average is calculated: " + average);
-        return javax.ws.rs.core.Response.ok( average ).build( );
+        SalesModule71.AOM.throwAuthenticationException("user is not allowed to see /leads/score endpoint");
+        return javax.ws.rs.core.Response.status(Response.Status.FORBIDDEN).build( );
     }
 }
