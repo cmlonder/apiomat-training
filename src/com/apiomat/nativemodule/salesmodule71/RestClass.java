@@ -76,9 +76,7 @@ public class RestClass extends com.apiomat.nativemodule.AbstractRestResource
         // extract auth information from the request object if needed
         System.out.println( request );
 
-        if (request.getIsAccountRequest()) {
-            // check if it is account or user ->
-            // request.getIsAccountRequest() || SalesModule71.AOM.checkUserRequestCredentials(request)
+        if (request.getIsAccountRequest() || SalesModule71.AOM.checkUserRequestCredentials(request)) {
             IModel<?>[] leadsModel = SalesModule71.AOM.findByNames(request.getApplicationName(), Lead.MODULE_NAME, Lead.MODEL_NAME, "", request);
             final List<Lead> fields = Arrays.stream( leadsModel ).map(t -> ( Lead ) t).collect( Collectors.toList( ) );
 
