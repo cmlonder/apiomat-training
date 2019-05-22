@@ -164,12 +164,13 @@ public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.sales
             String userName = salesMans.get(0).getUserName();
             String ownerUserName = salesMans.get(0).getOwnerUserName();
             String requestingUsername = salesMans.get(0).getRequestingUsername();
-            SalesModule71.AOM.throwAuthenticationException("user is trying to login with " +
+            SalesModule71.AOM.log(Level.INFO, "user is trying to login with " +
                     "userName: " + userName +
                     " ownerUserName: " + ownerUserName +
                     " requestingUsername: " + requestingUsername);
             return true;
         }
+
         SalesModule71.AOM.throwAuthenticationException("user is not allowed with email: " + userNameOrEmail);
         return false;
     }
