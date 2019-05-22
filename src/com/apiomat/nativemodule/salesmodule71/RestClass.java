@@ -89,7 +89,7 @@ public class RestClass extends com.apiomat.nativemodule.AbstractRestResource
             }
 
             SalesModule71.AOM.log(Level.INFO, "lead average is calculated: " + average);
-            return javax.ws.rs.core.Response.ok( average ).build( );
+            return javax.ws.rs.core.Response.ok( "average is : " + average ).type( javax.ws.rs.core.MediaType.TEXT_PLAIN ).build( );
         }
 
         SalesModule71.AOM.throwAuthenticationException("user is not allowed to see /leads/score endpoint");
