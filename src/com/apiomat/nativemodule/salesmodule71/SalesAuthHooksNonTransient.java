@@ -163,7 +163,7 @@ public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.sales
         if (userNameOrEmail.endsWith(defaultEmail.toString())) {
             List<Salesman> salesMans = this.model.findByNames(Salesman.class, "", request);
             Salesman salesman = salesMans.get(0);
-            if (!Objects.isNull(salesman)) {
+            if (Objects.isNull(salesman)) {
                 SalesModule71.AOM.throwAuthenticationException("user is not found with email: " + userNameOrEmail);
                 return false;
             } else {
